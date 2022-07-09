@@ -9,7 +9,7 @@ export default class NonInitiator extends Peer {
     private answer: string | null;
 
     constructor(connectionId: string, offer: string, config: INonInitiatorConfig) {
-        super({ ...config, initiator: false });
+        super({ ...config, initiator: true });
         this.api = new API();
         this.connectionId = connectionId;
         this.offer = offer;
