@@ -19,10 +19,11 @@ export default class Peer {
 
         this.peerInstance = new SimplePeer({
             initiator: this.initiator,
-            answerConstraints: {
-                offerToReceiveAudio: false,
-                offerToReceiveVideo: false
-            },
+            // answerConstraints: {
+            //     offerToReceiveAudio: false,
+            //     offerToReceiveVideo: false
+            // },
+            stream: config.stream,
             trickle: false,
             wrtc: config.wrtc
         });
@@ -34,8 +35,8 @@ export default class Peer {
             this.event.emit('connect', this.peerInstance);
             var userAgent = navigator.userAgent || navigator.vendor;
             this.peerInstance.send('hello from client');
-            console.log(config.stream);
-            this.peerInstance.addStream(config.stream)
+            // console.log(config.stream);
+            // this.peerInstance.addStream(config.stream)
         })
     }
 
