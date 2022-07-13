@@ -1,13 +1,13 @@
-import Pusher from 'pusher-js';
+import PusherJs from 'pusher-js';
 import EventEmitter from 'eventemitter3';
 
-Pusher.logToConsole = true;
+PusherJs.logToConsole = true;
 
 export default class Pusher extends EventEmitter {
     constructor(connectionId) {
         super()
         this.connectionId = connectionId;
-        this.pusher = new Pusher(process.env.NEXT_PUBLIC_PUSHER_KEY, {
+        this.pusher = new PusherJs(process.env.NEXT_PUBLIC_PUSHER_KEY, {
             cluster: process.env.NEXT_PUBLIC_PUSHER_CLUSTER
         });
         this.initChannel()
@@ -17,7 +17,6 @@ export default class Pusher extends EventEmitter {
         const channelName = 'vibe-cam-' + this.connectionId;
         this.channel = this.pusher.subscribe(channelName);
         this.channel.bind('signal', (data) => {
-            console.log(signal, data);
             this.emit('signal', data);
         }, this)
     }

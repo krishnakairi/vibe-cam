@@ -1,6 +1,6 @@
 import { get } from 'lodash';
 import { v4 as uuidv4 } from 'uuid';
-import Pusher from 'pusher-js';
+import Pusher from './pusher';
 import API from './api';
 
 export default function Peer(connectionId, stream) {
