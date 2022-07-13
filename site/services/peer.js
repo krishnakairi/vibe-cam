@@ -1,4 +1,4 @@
-import { get } from 'lodash';
+import SimplePeer from 'simple-peer';
 import { v4 as uuidv4 } from 'uuid';
 import Pusher from './pusher';
 import API from './api';
@@ -7,11 +7,6 @@ export default function Peer(connectionId, stream) {
     const peerId = uuidv4();
     const api = new API();
     const pusher = new Pusher(connectionId);
-
-    const SimplePeer = get(window, 'SimplePeer', false);
-    if (!SimplePeer) {
-        throw new Error('No Simple-Peer provider.')
-    }
 
     const peer = new SimplePeer({
         initiator: true,

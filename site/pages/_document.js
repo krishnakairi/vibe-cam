@@ -8,10 +8,6 @@ export default function Document() {
       <body>
         <Main />
         <NextScript />
-        <Script
-          src="https://cdnjs.cloudflare.com/ajax/libs/simple-peer/9.11.1/simplepeer.min.js"
-          strategy="beforeInteractive"
-        ></Script>
       </body>
     </Html>
   )
